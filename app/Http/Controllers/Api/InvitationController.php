@@ -31,11 +31,9 @@ class InvitationController extends Controller
 
     public function answerInvitation(EventMember $invitation, AnswerInvitationRequest $request)
     {
+        $this->authorize('answer', $invitation);
         if ($invitation->status != 'pending') {
             return $this->errorResponse('This Invitation Answer Before', '400');
-        }
-        if ($invitation->invited_id != auth()->user()->id) {
-            return $this->errorResponse('You Can Not Answer This Invitation', '400');
         }
 
         $invitation->update($request->only('status'));
@@ -57,6 +55,7 @@ class InvitationController extends Controller
 
     public function sendInvitations(Event $event, SendInvitationRequest $request)
     {
+        $this->authorize('send', [ EventMember::class, $event ]);
         $items          = $this->prepareInvitations($request);
         $data           = [];
         $invited        = [];

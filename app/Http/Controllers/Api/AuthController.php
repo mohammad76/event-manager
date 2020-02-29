@@ -20,6 +20,7 @@ class AuthController extends Controller
     public function login(ApiLoginRequest $request)
     {
         $credentials = $this->findCredentials($request);
+
         try {
             if (!$token = JWTAuth::attempt($credentials)) {
                 return $this->errorResponse('invalid credentials', '400');
@@ -33,6 +34,7 @@ class AuthController extends Controller
 
     public function register(ApiRegisterRequest $request)
     {
+
         $user = User::create([
                                  'name'     => $request->get('name'),
                                  'mobile'   => $request->get('mobile'),

@@ -26,6 +26,7 @@ class EventController extends Controller
 
     public function show(Event $event)
     {
+        $this->authorize('view', $event);
         $event->load('members');
         return $this->successResponse($event);
 
@@ -33,6 +34,7 @@ class EventController extends Controller
 
     public function showEventInvitations(Event $event)
     {
+        $this->authorize('view', $event);
         $invitations = $event->invitations;
         $data        = [
             'event'       => $event,
@@ -43,12 +45,14 @@ class EventController extends Controller
 
     public function update(Request $request, Event $event)
     {
+        $this->authorize('update', $event);
         $event->update($request->only('name', 'description'));
         return $this->successResponse($event, 200, 'Event updated successfully');
     }
 
     public function destroy(Event $event)
     {
+        $this->authorize('delete', $event);
         $event->delete();
         return $this->successResponse('', 200, 'Event deleted successfully');
     }
