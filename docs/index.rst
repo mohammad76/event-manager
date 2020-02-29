@@ -1,20 +1,8 @@
-.. event-manager documentation master file, created by
-   sphinx-quickstart on Sat Feb 29 13:52:42 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to event-manager's documentation!
+Welcome to Event Manager documentation!
 =========================================
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+this is a simple documentation of Event Manager System.
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Introdaction
+------------------
+this a Laravel Project for using this project you should have knowledge of laravel applications
