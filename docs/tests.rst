@@ -7,6 +7,6 @@ Run Tests
 ----------
 for run this tests you can use this command:
 
-.. code-block::
+.. code-block:: PHP
 
     vendor\bin\phpunit
