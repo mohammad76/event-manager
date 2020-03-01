@@ -64,7 +64,7 @@ for answer a received invitation you can use this route:
 .. Note:: instead of ``{{invitation_id}}`` you should put invitation id you want answer to that.
 
 
- you should define data to answer an invitation , like this:
+you should define data to answer an invitation , like this:
 
 .. code-block:: JSON
 
