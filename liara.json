@@ -1,0 +1,9 @@
+{
+    "volume": "/var/www/html/storage",
+    "laravel": {
+        "postBuildCommands": [
+            "rmdir public/storage",
+            "php artisan storage:link"
+        ]
+    }
+}
