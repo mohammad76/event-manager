@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EventMember extends Model
+class Invitation extends Model
 {
     protected $fillable = ['event_id' , 'inviter_id' , 'invited_id' , 'status'];
     protected $hidden = [ 'event_id', 'inviter_id', 'invited_id' ];

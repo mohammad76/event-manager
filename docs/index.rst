@@ -8,8 +8,8 @@ Event Manager is powerful System for Manage Your Events
    :caption: First steps
 
    intro
-   
-   
+
+
 .. toctree::
    :maxdepth: 2
    :hidden:
@@ -19,3 +19,11 @@ Event Manager is powerful System for Manage Your Events
    user
    events
    invitations
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Advanced
+
+   tests
+   models

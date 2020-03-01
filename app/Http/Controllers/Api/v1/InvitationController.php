@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnswerInvitationRequest;
@@ -8,7 +8,7 @@ use App\Http\Requests\ReceivedInvitationsRequest;
 use App\Http\Requests\SendedInvitationsRequest;
 use App\Http\Requests\SendInvitationRequest;
 use App\Models\Event;
-use App\Models\EventMember;
+use App\Models\Invitation;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 
@@ -29,7 +29,7 @@ class InvitationController extends Controller
         return $this->successResponse($response);
     }
 
-    public function answerInvitation(EventMember $invitation, AnswerInvitationRequest $request)
+    public function answerInvitation(Invitation $invitation, AnswerInvitationRequest $request)
     {
         $this->authorize('answer', $invitation);
         if ($invitation->status != 'pending') {
@@ -55,7 +55,7 @@ class InvitationController extends Controller
 
     public function sendInvitations(Event $event, SendInvitationRequest $request)
     {
-        $this->authorize('send', [ EventMember::class, $event ]);
+        $this->authorize('send', [ Invitation::class, $event ]);
         $items          = $this->prepareInvitations($request);
         $data           = [];
         $invited        = [];

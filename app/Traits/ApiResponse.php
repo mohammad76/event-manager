@@ -18,19 +18,25 @@ trait ApiResponse
         }
         $response['data'] = $data;
         if (config('app.debug') == TRUE) {
-            $response['user'] = auth()->user() ?? 'Guest';
+            $response['__debug'] = [
+                'request' => request()->all(),
+                'user'    => auth()->user() ?? 'Guest',
+            ];
         }
         return \response()->json($response, $code);
     }
 
 
-    public function errorResponse($message, $code)
+    public function errorResponse($message, $code , $data = NULL)
     {
         $response = [
-            'code'   => $code,
-            'status' => 'error',
-            'message' => $message
+            'code'    => $code,
+            'status'  => 'error',
+            'message' => $message,
         ];
+        if ($data){
+            $response['data'] = $data;
+        }
         return \response()->json($response, $code);
     }
 

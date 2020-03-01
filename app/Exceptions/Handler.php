@@ -106,7 +106,7 @@ class Handler extends ExceptionHandler
             break;
         }
 
-        return $this->errorResponse($response['message'] , $statusCode);
+        return $this->errorResponse($response['message'] , $statusCode , $response);
     }
 
 }

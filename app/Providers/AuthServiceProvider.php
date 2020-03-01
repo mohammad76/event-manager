@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Event;
-use App\Models\EventMember;
+use App\Models\Invitation;
 use App\Models\User;
 use App\Policies\EventPolicy;
 use App\Policies\InvitationPolicy;
@@ -19,9 +19,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        Event::class => EventPolicy::class,
-        EventMember::class => InvitationPolicy::class,
-        User::class => UserPolicy::class,
+		Event::class      => EventPolicy::class,
+		Invitation::class => InvitationPolicy::class,
+		User::class       => UserPolicy::class,
     ];
 
     /**

@@ -12,7 +12,7 @@ class User extends Authenticatable implements JWTSubject
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password', 'mobile', 'avatar'
+        'name', 'email', 'password', 'mobile', 'avatar',
     ];
 
     protected $hidden = [
@@ -31,19 +31,19 @@ class User extends Authenticatable implements JWTSubject
 
     public function invitedEvents()
     {
-        return $this->belongsToMany(Event::class, 'event_members', 'invited_id')
+        return $this->belongsToMany(Event::class, 'invitations', 'invited_id')
             ->where('status', 'accepted');
     }
 
     public function received_invitations()
     {
-        return $this->hasMany(EventMember::class, 'invited_id', 'id')->with('event', 'invitor');
+        return $this->hasMany(Invitation::class, 'invited_id', 'id')->with('event', 'invitor');
 
     }
 
     public function send_invitations()
     {
-        return $this->hasMany(EventMember::class, 'inviter_id', 'id')->with('event', 'invited');
+        return $this->hasMany(Invitation::class, 'inviter_id', 'id')->with('event', 'invited');
 
     }
 

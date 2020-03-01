@@ -10,6 +10,7 @@ use Tests\TestCase;
 class AuthTest extends TestCase
 {
     use RefreshDatabase;
+
     public function test_can_register_user()
     {
         $data = [
@@ -19,8 +20,17 @@ class AuthTest extends TestCase
             'password' => '1234567890',
         ];
 
-        $response =  $this->post('api/register', $data , ['Accept' , 'application/json']);
-          $response->assertStatus(200);
+        $response = $this->post(route('api.user.register'), $data);
+        $response->assertStatus(200);
+
+    }
+
+    public function test_user_can_login()
+    {
+        $user = $this->createUser();
+
+        $response = $this->apiAs($user, 'GET', route('api.user.me'));
+        $response->assertStatus(200);
 
     }
 }

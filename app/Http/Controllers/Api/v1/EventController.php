@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventListRequest;
+use App\Http\Requests\EventStoreRequest;
+use App\Http\Requests\EventUpdateRequest;
 use App\Models\Event;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -18,7 +20,7 @@ class EventController extends Controller
         return $this->successResponse($this->getEvents($type));
     }
 
-    public function store(Request $request)
+    public function store(EventStoreRequest $request)
     {
         $data = auth()->user()->myEvents()->create($request->only('name', 'description'));
         return $this->successResponse($data, 201);
@@ -43,7 +45,7 @@ class EventController extends Controller
         return $this->successResponse($data);
     }
 
-    public function update(Request $request, Event $event)
+    public function update(EventUpdateRequest $request, Event $event)
     {
         $this->authorize('update', $event);
         $event->update($request->only('name', 'description'));

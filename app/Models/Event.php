@@ -26,7 +26,7 @@ class Event extends Model
 
     public function isInvited($userId)
     {
-        $item = EventMember::where('event_id', $this->id)->where('invited_id', $userId)->where('status', '!=', 'rejected')->first();
+        $item = Invitation::where('event_id', $this->id)->where('invited_id', $userId)->where('status', '!=', 'rejected')->first();
         return (bool) $item;
     }
 
@@ -38,12 +38,12 @@ class Event extends Model
 
     public function invitations()
     {
-        return $this->hasMany(EventMember::class, 'event_id', 'id')->with('invitor', 'invited');
+        return $this->hasMany(Invitation::class, 'event_id', 'id')->with('invitor', 'invited');
     }
 
     public function members()
     {
-        return $this->belongsToMany(User::class, 'event_members', 'event_id', 'invited_id', 'id')
+        return $this->belongsToMany(User::class, 'invitations', 'event_id', 'invited_id', 'id')
             ->where('status', 'accepted');
     }
 }

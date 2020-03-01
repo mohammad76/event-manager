@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\EventMember;
+use App\Models\Invitation;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -17,17 +17,17 @@ class InvitationPolicy
     }
 
 
-    public function answer(User $user, EventMember $eventMember)
+    public function answer(User $user, Invitation $eventMember)
     {
         return $eventMember->invited_id == $user->id;
     }
 
-    public function delete(User $user, EventMember $eventMember)
+    public function delete(User $user, Invitation $eventMember)
     {
         return $eventMember->inviter_id == $user->id && $eventMember->status == 'pending';
     }
 
-    public function restore(User $user, EventMember $eventMember)
+    public function restore(User $user, Invitation $eventMember)
     {
         //
     }
@@ -38,7 +38,7 @@ class InvitationPolicy
      * @param \App\EventMember $eventMember
      * @return mixed
      */
-    public function forceDelete(User $user, EventMember $eventMember)
+    public function forceDelete(User $user, Invitation $eventMember)
     {
         //
     }
