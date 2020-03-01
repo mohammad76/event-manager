@@ -15,31 +15,31 @@ for install this project in your system you should install ``PHP`` , ``Mysql`` a
 
 first you should clone this project in your computer , use this command:
 
-.. code-block::
+.. code-block:: PHP
 
     git clone https://github.com/mohammad76/event-manager.git
 
 then you need go to the project folder:
 
-.. code-block::
+.. code-block:: PHP
 
     cd event-manager
 
 now you should install composer packages with this command:
 
-.. code-block::
+.. code-block:: PHP
 
     composer install
 
 in the next step you need to generate app key with this command:
 
-.. code-block::
+.. code-block:: PHP
 
     php artisan key:generate
 
 now we need jwt secret key you can build that with this command:
 
-.. code-block::
+.. code-block:: PHP
 
     php artisan jwt:secret
 
@@ -51,7 +51,7 @@ Event Manager system work with mysql database and you should config that , here 
 
 first you should build database in your mysql and put that in ``.env`` file in project directory, like this:
 
-.. code-block::
+.. code-block:: PHP
 
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
@@ -66,7 +66,7 @@ first you should build database in your mysql and put that in ``.env`` file in p
 
 after that you need to migrate database and the default data , you can use this command:
 
-.. code-block::
+.. code-block:: PHP
 
     php artisan migrate --seed
 
@@ -76,7 +76,7 @@ Make The Project Online
 -------------------------
 if you complete previous steps correctly project should be ready to get online with this command:
 
-.. code-block::
+.. code-block:: PHP
 
     php artisan serv
 
